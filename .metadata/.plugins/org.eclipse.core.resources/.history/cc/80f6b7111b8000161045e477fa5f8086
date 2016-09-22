@@ -1,0 +1,45 @@
+package fractional_knapsack;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.TreeMap;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.Map;
+
+
+public class FractionalKnapsack {
+	
+	private static double getOptimalValue(int capacity, int[] values, int[] weights) {
+		double value = 0;
+        double [] val_per_weight = new double [values.length];
+        TreeMap<Double, Integer> tmap = new TreeMap<Double, Integer>();
+        //write your code here
+        for (int i = 0; i < values.length; i++) {
+        	double ratio =  values[i] / weights[i];        	
+        	val_per_weight[i] = ratio;        	
+        	tmap.put(ratio, i);
+        }
+        Set set = tmap.entrySet();
+        Iterator iterator = set.iterator();
+        Boolean full = false;
+        while(full == false) {
+        	Map.Entry mentry = (Map.Entry)iterator.next();       
+           System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+           System.out.println(mentry.getValue());
+        }
+        return value;
+    }
+    
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int capacity = scanner.nextInt();
+        int[] values = new int[n];
+        int[] weights = new int[n];
+        for (int i = 0; i < n; i++) {
+            values[i] = scanner.nextInt();
+            weights[i] = scanner.nextInt();
+        }
+        System.out.println(getOptimalValue(capacity, values, weights));        
+    }
+} 

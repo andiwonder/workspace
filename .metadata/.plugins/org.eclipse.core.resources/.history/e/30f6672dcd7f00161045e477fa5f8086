@@ -1,0 +1,49 @@
+package fractional_knapsack;
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+public class FractionalKnapsack {
+    public class Pair implements Comparable<Pair> {
+        public final int index;
+        public final double value;
+
+        public Pair(int index, double value) {
+            this.index = index;
+            this.value = value;
+        }
+
+        @Override
+        public int compareTo(Pair other) {
+            //multiplied to -1 as the author need descending sort order
+            return 1 * Double.valueOf(this.value).compareTo(other.value);
+        }
+    }
+	
+	private static double getOptimalValue(int capacity, int[] values, int[] weights) {
+        double value = 0;
+        //write your code here
+        Pair[] val_per_weight = new Pair[values.length];
+        for (int i = 0; i < values.length; i++) {
+        	val_per_weight[i] = new Pair(1, 10);
+        }
+        Arrays.sort(val_per_weight);
+        for (int i = values.length - 1; i >= 0; i--) {
+        	System.out.println(val_per_weight[i]);
+        }
+        return value;
+    }
+    
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int capacity = scanner.nextInt();
+        int[] values = new int[n];
+        int[] weights = new int[n];
+        for (int i = 0; i < n; i++) {
+            values[i] = scanner.nextInt();
+            weights[i] = scanner.nextInt();
+        }
+        System.out.println(getOptimalValue(capacity, values, weights));
+    }
+} 
