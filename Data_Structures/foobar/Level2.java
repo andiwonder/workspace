@@ -26,7 +26,7 @@ public class Level2 {
 				}
 			}
 		}
-//		System.out.println(output);
+//	System.out.println(output);
 		output = (int) (Math.ceil((double)output / base));
 		System.out.println(Arrays.toString(values.toArray()));
 		System.out.println(output);
@@ -45,13 +45,13 @@ public class Level2 {
 		}
 		int length = digits.size();
 		List<Integer> xArr = digits;
-	    Comparator<Integer> comparator = new Comparator<Integer>() {
-	        @Override
-	        public int compare(Integer o1, Integer o2) {
-	            return o2.compareTo(o1);
-	        }
-	    };
-	    Collections.sort(digits);
+	  Comparator<Integer> comparator = new Comparator<Integer>() {
+	    @Override
+	    public int compare(Integer o1, Integer o2) {
+	      return o2.compareTo(o1);
+	    }
+	  };
+	  Collections.sort(digits);
 		Collections.sort(xArr, comparator);
 		int xval = 0;
 		int yval = 0;
