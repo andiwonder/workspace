@@ -1,0 +1,47 @@
+import java.util.*;
+public class Level2 {
+
+	public static void main(String[] args) {
+		String n = "210022";
+		int len = n.length();
+		List<Long> digits = digitToArray(n, len, 3);
+		Rem(digits , len);
+	}
+	
+	public static List<Long> digitToArray(String n, int len, int base) {
+		long start = Long.parseLong(n);
+		String basenum = Long.toString(start,base);
+		long id = Long.parseLong(basenum);
+		List<Long> digits = new LinkedList<Long>(); 
+		while (id > 0) {
+		    digits.add(0,id%10);
+		    id = id/10;
+		}
+		if (digits.size() < len){
+			for (int i= digits.size(); i <= len -1; i++){
+				digits.add(i,(long) 0);
+			}
+		}
+		return digits;
+	}
+
+	
+	public static void Rem(List<Long> digits , int len) {
+//		System.out.println(Arrays.toString(digits.toArray()));
+		List<Long> digits2 = digits;
+		Collections.sort(digits);
+		System.out.println(Arrays.toString(digits.toArray()));
+		Collections.sort(digits2, Collections.reverseOrder());
+		System.out.println(Arrays.toString(digits2.toArray()));
+		String xval = "";
+		String yval = "";
+		for (int i = 0;i < len; i++) {
+			xval = xval + (digits.get(i));
+			yval = yval + (digits2.get(i));
+		}
+		long newval = yval - xval;
+		System.out.println("yval is " + yval + " xval is " + xval);
+		System.out.println("newval is " + newval);
+	}
+	
+}

@@ -1,0 +1,81 @@
+import java.util.*;
+public class Level2 {
+
+	public static void main(String[] args) {
+		String n = "210111";
+		int len = n.length();
+
+		
+		String test = Integer.toString(Integer.parseInt("211110", 3), 10);
+		String test2 = Integer.toString(Integer.parseInt("011112", 3), 10);
+		System.out.println(test);
+		System.out.println(test2);
+		
+		
+//		int base = 3;
+//		int counter = 0;
+//		int output = 0;
+//		boolean repeat = false;
+//		List<Integer> values = new ArrayList<Integer>();
+//		values.add(0, Integer.parseInt(n));
+//		while (counter < 100){
+//			counter++;
+//			List<Long> digits = digitToArray(n, len, base);
+//			int anwser = Rem(digits, len);
+//			values.add(anwser);
+//			n = Long.toString(values.get(values.size()-1));
+//			for (int i=0; i < values.size()-1 ; i++){
+//				if ((int) values.get(i) == (int) values.get(values.size()-1)){
+//					output = values.size() - 2 - i;
+//					repeat = true;
+//				}
+//			}
+//		}
+	}
+	
+	public int baseToDecimal(int n){
+		
+	}
+	
+	public int decimalToBase(){
+		return 3;
+	}
+	
+	public static List<Long> digitToArray(String n, int len) {
+		long start = Long.parseLong(n);
+		String basenum = Long.toString(start,base); 
+		long id = Long.parseLong(basenum);
+//		System.out.println(id);
+		List<Long> digits = new LinkedList<Long>(); 
+		while (id > 0) {
+		    digits.add(0,id%10);
+		    id = id/10;
+		}
+		if (digits.size() < len){
+			for (int i= digits.size(); i <= len -1; i++){
+				digits.add(i,(long) 0);
+			}
+		}
+		return digits;
+	}
+
+	
+	public static int Rem(List<Long> digits , int len) {
+		List<Long> digits2 = new ArrayList<Long>();
+		for (Long item : digits) {
+			digits2.add(item);
+		}
+		Collections.sort(digits);
+		Collections.sort(digits2, Collections.reverseOrder());
+		String xval = "";
+		String yval = "";
+		for (int i = 0;i < len; i++) {
+			xval = xval + (digits.get(i));
+			yval = yval + (digits2.get(i));
+		}
+		int answer = Integer.parseInt(yval, 10) - Integer.parseInt(xval,10);
+//		System.out.println(answer);
+		return answer;
+	}
+	
+}
