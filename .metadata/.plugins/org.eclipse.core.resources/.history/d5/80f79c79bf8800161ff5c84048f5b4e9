@@ -1,0 +1,10 @@
+
+public class Fuel_injection {
+	public static void main(String[] args){
+		int n = 63;
+		int counter = 0;
+		while (n > 0){
+			if ((n + 1) % 2 == 0)
+		}
+	}
+}

@@ -1,0 +1,26 @@
+import java.math.BigInteger;
+
+public class Fuel_injection {
+	public static void main(String[] args){
+        String n = "1234";
+		BigInteger num = new BigInteger(n);
+		int counter = 0;
+		BigInteger num2 = new BigInteger("2");
+		BigInteger num1 = new BigInteger("1");
+		BigInteger negnum1 = new BigInteger("-1");
+		while (num.compareTo(num2) >= 0){
+			if (num.mod(new BigInteger("2")).equals(BigInteger.ZERO)){
+				counter = counter + 1;
+				num = num.divide(num2);
+			} else if (num.add(num1).divide(num2).mod(num2).equals(BigInteger.ZERO)){
+				counter = counter + 2;
+				num = num.add(num1).divide(num2);
+			} else {
+				counter = counter + 2;
+				num = num.add(negnum1).divide(num2);
+			}
+		}
+		counter = counter + 1;
+//		return counter;
+	}
+}
