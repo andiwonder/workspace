@@ -16,7 +16,7 @@ public class Fuel_injection {
 				counter = counter + 2;
 				num = num.add(num1).divide(num2);
 			} else {
-				System.out.println("num for else is " + num);
+				System.out.println("num"");
 				System.out.println("so uhmm else was hit");
 				counter = counter + 2;
 				num = num.add(negnum1).divide(num2);
