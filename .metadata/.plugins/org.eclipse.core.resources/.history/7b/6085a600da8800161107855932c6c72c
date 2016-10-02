@@ -18,7 +18,7 @@ public class Fuel_injection {
 				num = num.divide(num2);
 			} else if (num.equals(num3)) {
 				num = BigInteger.ZERO;
-				counter = counter + 2;
+				counter = 
 			}
 			else if (num.add(num1).divide(num2).mod(num2).equals(BigInteger.ZERO)){
 				counter = counter + 2;

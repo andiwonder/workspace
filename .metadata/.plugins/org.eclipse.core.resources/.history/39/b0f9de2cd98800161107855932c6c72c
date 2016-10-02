@@ -2,13 +2,12 @@ import java.math.BigInteger;
 
 public class Fuel_injection {
 	public static void main(String[] args){
-        String n = "13";
+        String n = "7";
 		BigInteger num = new BigInteger(n);
 		int counter = 0;
 		BigInteger negnum1 = new BigInteger("-1");
 		BigInteger num1 = new BigInteger("1");
 		BigInteger num2 = new BigInteger("2");
-		BigInteger num3 = new BigInteger("3");
 		if (n == "1") {
 //			return 1;
 		}
@@ -16,11 +15,7 @@ public class Fuel_injection {
 			if (num.mod(num2).equals(BigInteger.ZERO)){
 				counter = counter + 1;
 				num = num.divide(num2);
-			} else if (num.equals(num3)) {
-				num = BigInteger.ZERO;
-				counter = counter + 2;
-			}
-			else if (num.add(num1).divide(num2).mod(num2).equals(BigInteger.ZERO)){
+			} else if (num.add(num1).divide(num2).mod(num2).equals(BigInteger.ZERO)){
 				counter = counter + 2;
 				num = num.add(num1).divide(num2);
 			} else {
