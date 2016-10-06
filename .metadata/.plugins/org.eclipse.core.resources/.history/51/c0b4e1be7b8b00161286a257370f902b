@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Lucky {
+
+	public static void main(String[] args) {
+		int[] l = {1,2,3,4,5,6};
+		Arrays.sort(l);
+		int listCount = 0;
+		for (int i=0; i < l.length; i++){
+			int currentDividor = l[i];
+			System.out.println("currentDividor is " + currentDividor);
+			int comNum = 0;
+			int [] n = new int[3];
+			ArrayList<Integer> alreadyused = new ArrayList<Integer>();
+			for (int index = 0; index < l.length; index++)
+			{
+			    alreadyused.add(l[index]);
+			}
+			for (int j=0 ; j < l.length; j++){
+				System.out.println("working on " + l[j]);
+				if (l[j] != currentDividor 
+					&& (l[j]%currentDividor == 0)
+					&& i < j){
+					currentDividor = l[j];
+					n[comNum] = l[j];
+					comNum++;
+					System.out.println("Its a match");
+				}
+				if (comNum == 2){
+					System.out.println(Arrays.toString(n));
+					listCount++;
+					break;
+				}
+			}
+		}
+		System.out.println(listCount);
+	}
+
+}

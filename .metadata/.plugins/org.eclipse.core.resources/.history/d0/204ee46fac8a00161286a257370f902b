@@ -1,0 +1,118 @@
+package tree_height;
+import java.util.*;
+import java.io.*;
+
+public class tree_height {
+    class FastScanner {
+		StringTokenizer tok = new StringTokenizer("");
+		BufferedReader in;
+
+		FastScanner() {
+			in = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() throws IOException {
+			while (!tok.hasMoreElements())
+				tok = new StringTokenizer(in.readLine());
+			return tok.nextToken();
+		}
+		int nextInt() throws IOException {
+			return Integer.parseInt(next());
+		}
+	}
+
+	public class TreeHeight {
+		int n;
+		int parent[];
+		
+		void read() throws IOException {
+			FastScanner in = new FastScanner();
+			n = in.nextInt();
+			parent = new int[n];
+			for (int i = 0; i < n; i++) {
+				parent[i] = in.nextInt();
+			}
+		}
+
+//		5
+//      0  1 2 3 4
+//		4 -1 4 1 1
+
+		int computeHeight() {
+        // Replace this code with a faster implementation
+			int maxHeight = 0;
+			for (int vertex = 0; vertex < n; vertex++) {
+			System.out.println("outer loop is " + vertex);
+			int height = 0;
+			for (int i = vertex; i != -1; i = parent[i])
+				height++;
+				maxHeight = Math.max(maxHeight, height);
+				System.out.println("inner loop is " + vertex);
+				System.out.println("inner height is " + height);
+				System.out.println("maxHeight is " + maxHeight);
+				System.out.println("-----------");
+			}
+			return maxHeight;
+		}
+	}
+
+	static public void main(String[] args) throws IOException {
+            new Thread(null, new Runnable() {
+                    public void run() {
+                        try {
+                            new tree_height().run();
+                        } catch (IOException e) {
+                        }
+                    }
+                }, "1", 1 << 26).start();
+	}
+	public void run() throws IOException {
+		TreeHeight tree = new TreeHeight();
+		tree.read();
+		System.out.println(tree.computeHeight());
+	}
+	
+	public int height(TreeNode node) {
+	    int height = -1;
+	    if (node != null) {
+	        // Breadth-first traversal, keeping track of the number of levels
+	        Queue<TreeNode> thisLevel = new LinkedList<TreeNode>(),
+	                        nextLevel = new LinkedList<TreeNode>();
+
+	        thisLevel.add(node);
+	        while (null != (node = thisLevel.poll())) {
+	            if (node.left  != null) nextLevel.add(node.left);
+	            if (node.right != null) nextLevel.add(node.right);
+
+	            if (thisLevel.isEmpty()) {
+	                height++;
+
+	                Queue<TreeNode> swapTemp = thisLevel;
+	                thisLevel = nextLevel;
+	                // We could create a new nextLevel queue, but reusing the
+	                // newly emptied thisLevel queue is more efficient.
+	                nextLevel = swapTemp;
+	            }
+	        }
+	    }
+	    return height;
+	}
+	
+	public class Tree<T> {
+	    private Node<T> root;
+
+	    public Tree(T rootData) {
+	        root = new Node<T>();
+	        root.data = rootData;
+	        root.children = new ArrayList<Node<T>>();
+	    }
+
+	    public static class Node<T> {
+	        private T data;
+	        private Node<T> parent;
+	        private List<Node<T>> children;
+	    }
+	}
+}
+
+
