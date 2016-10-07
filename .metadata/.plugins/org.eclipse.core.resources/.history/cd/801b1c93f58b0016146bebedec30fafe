@@ -4,7 +4,7 @@ public class Lucky3 {
 
 	public static void main(String [] args){
 		int total = 0;
-		int [] l = {1,10,20,40};
+		int [] l = {1,10,20,30};
 		Arrays.sort(l);
 		List <Integer> triples = findTriple(l);
 		List <Integer> uniquevals = removeDup(l);
